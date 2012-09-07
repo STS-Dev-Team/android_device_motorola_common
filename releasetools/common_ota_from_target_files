@@ -414,12 +414,12 @@ def WriteFullOTAPackage(input_zip, output_zip):
   script.Print("*                                              *")
   script.Print("*            STS-Dev-Team presents             *")
   script.Print("*                                              *")
-  script.Print("*       CM9 Unofficial Droid4 ICS KEXEC        *")
+  script.Print("*          ICS KEXEC for OMAP4 devices         *")
   script.Print("*                                              *")
   script.Print("*     Follow us  @hashcode0f and @dhacker29    *")
   script.Print("*        Get the GApps at goo.im/gapps         *")
   script.Print("*                                              *")
-  script.Print("*       And visit rombot.org for support       *")
+  script.Print("* And visit dl.hash-of-codes.com for downloads *")
   script.Print("*                                              *")
   script.Print("************************************************")
   script.Print(" ")
@@ -476,7 +476,7 @@ def WriteFullOTAPackage(input_zip, output_zip):
   script.ShowProgress(0.1, 0)
   script.Print("Don't forget to install the GApps if fresh install.")
   script.Print("")
-  script.Print("Finished installing CM9 for Droid 4 Leak, Enjoy!")
+  script.Print("Finished installing ICS KEXEC for OMAP4 devices, Enjoy!")
   device_specific.FullOTA_InstallEnd()
 
   if OPTIONS.extra_script is not None:
