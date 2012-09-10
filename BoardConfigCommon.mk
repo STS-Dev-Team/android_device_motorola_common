@@ -11,9 +11,11 @@ endif
 
 # Camera
 USE_CAMERA_STUB := false
-#BOARD_USES_TI_CAMERA_HAL := true
 #TI_CAMERAHAL_DEBUG_ENABLED := true
 TI_OMAP4_CAMERAHAL_VARIANT := false
+ifneq ($(BOARD_USES_KEXEC),true)
+BOARD_HAS_LOCKED_BOOTLOADER := true
+endif
 
 # inherit from the proprietary version
 -include vendor/motorola/common/BoardConfigVendor.mk
