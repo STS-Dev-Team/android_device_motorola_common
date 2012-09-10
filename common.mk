@@ -113,16 +113,18 @@ PRODUCT_COPY_FILES += \
 
 # Phone settings
 PRODUCT_COPY_FILES += \
-    vendor/cm/prebuilt/common/etc/spn-conf.xml:system/etc/spn-conf.xml
+    $(COMMON_FOLDER)/prebuilt/etc/spn-conf.xml:system/etc/spn-conf.xml
 
 # Kexec files
 ifneq ($(TARGET_DEVICE),solana)
+ifeq ($(BOARD_USES_KEXEC),true)
 PRODUCT_COPY_FILES += \
     $(COMMON_FOLDER)/kexec/arm_kexec.ko:system/etc/kexec/arm_kexec.ko \
     $(COMMON_FOLDER)/kexec/atags:system/etc/kexec/atags \
     $(COMMON_FOLDER)/kexec/kexec:system/etc/kexec/kexec \
     $(COMMON_FOLDER)/kexec/kexec.ko:system/etc/kexec/kexec.ko \
     $(COMMON_FOLDER)/kexec/uart.ko:system/etc/kexec/uart.ko
+endif
 endif
 
 # we have enough storage space to hold precise GC data
@@ -134,6 +136,7 @@ PRODUCT_LOCALES += en_US
 # stuff specific to ti OMAP4 hardware
 $(call inherit-product, hardware/ti/omap4xxx/omap4.mk)
 $(call inherit-product, hardware/ti/wpan/ti-wpan-products.mk)
-$(call inherit-product-if-exists, vendor/motorola/common/proprietary/imgtec/sgx-imgtec-bins.mk)
 $(call inherit-product-if-exists, device/ti/proprietary-open/wl12xx/wlan/wl12xx-wlan-fw-products.mk)
-
+ifeq ($(BOARD_USES_KEXEC),true)
+$(call inherit-product-if-exists, vendor/motorola/common/proprietary/imgtec/sgx-imgtec-bins.mk)
+endif
