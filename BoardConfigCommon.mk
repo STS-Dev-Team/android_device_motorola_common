@@ -11,11 +11,22 @@ endif
 
 # Camera
 USE_CAMERA_STUB := false
-#TI_CAMERAHAL_DEBUG_ENABLED := true
-TI_OMAP4_CAMERAHAL_VARIANT := false
+TI_CAMERAHAL_DEBUG_ENABLED := true
 ifneq ($(BOARD_USES_KEXEC),true)
 BOARD_HAS_LOCKED_BOOTLOADER := true
+else
+TI_OMAP4_CAMERAHAL_VARIANT := false
 endif
+
+OMAP_ENHANCEMENT_MULTIGPU := true
+OMAP_ENHANCEMENT := true
+#OMAP_ENHANCEMENT_BURST_CAPTURE := true
+#OMAP_ENHANCEMENT_S3D := true
+#OMAP_ENHANCEMENT_CPCAM := true
+#OMAP_ENHANCEMENT_VTC := true
+#USE_ITTIAM_AAC := true
+#BLTSVILLE_ENHANCEMENT :=true
+ENHANCED_DOMX := true
 
 # inherit from the proprietary version
 -include vendor/motorola/common/BoardConfigVendor.mk
