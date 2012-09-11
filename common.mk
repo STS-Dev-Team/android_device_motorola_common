@@ -85,7 +85,8 @@ PRODUCT_PACKAGES += \
     com.android.future.usb.accessory \
     FileManager \
     MusicFX \
-    Apollo
+    Apollo \
+    Camera
 
 # Permissions files
 PRODUCT_COPY_FILES += \
