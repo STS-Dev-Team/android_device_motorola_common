@@ -79,7 +79,8 @@ PRODUCT_PACKAGES += \
     Superuser \
     su \
     DockAudio \
-    safestrapmenu
+    strace
+
 
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory \
@@ -108,24 +109,29 @@ PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
     frameworks/base/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml
 
-# Prebuilts
-PRODUCT_COPY_FILES += \
-    $(COMMON_FOLDER)/prebuilt/bin/strace:system/bin/strace
-
 # Phone settings
 PRODUCT_COPY_FILES += \
     $(COMMON_FOLDER)/prebuilt/etc/spn-conf.xml:system/etc/spn-conf.xml
 
 # Kexec files
-ifneq ($(TARGET_DEVICE),solana)
 ifeq ($(BOARD_USES_KEXEC),true)
+# Don't add these for solana -- they're in the solana device setup
+ifneq ($(TARGET_DEVICE),solana)
 PRODUCT_COPY_FILES += \
     $(COMMON_FOLDER)/kexec/arm_kexec.ko:system/etc/kexec/arm_kexec.ko \
-    $(COMMON_FOLDER)/kexec/atags:system/etc/kexec/atags \
-    $(COMMON_FOLDER)/kexec/kexec:system/etc/kexec/kexec \
     $(COMMON_FOLDER)/kexec/kexec.ko:system/etc/kexec/kexec.ko \
     $(COMMON_FOLDER)/kexec/uart.ko:system/etc/kexec/uart.ko
 endif
+
+# Common kexec files
+PRODUCT_COPY_FILES += \
+    $(COMMON_FOLDER)/kexec/atags:system/etc/kexec/atags \
+    $(COMMON_FOLDER)/kexec/kexec:system/etc/kexec/kexec \
+
+# Kexec Boot support for Safestrap v3
+PRODUCT_COPY_FILES += \
+    $(COMMON_FOLDER)/prebuilt/bin/bbx:/root/sbin/bbx \
+    $(COMMON_FOLDER)/prebuilt/bin/fixboot.sh:/root/sbin/fixboot.sh
 endif
 
 # we have enough storage space to hold precise GC data
