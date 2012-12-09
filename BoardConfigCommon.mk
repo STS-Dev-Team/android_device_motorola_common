@@ -2,11 +2,9 @@
 -include device/motorola/kexec/BoardConfig.mk
 
 # ICS Kernel Hacks
-ifneq ($(TARGET_DEVICE),solana)
 ifneq ($(BOARD_USES_KEXEC),true)
-BOARD_OVERRIDE_FB0_WIDTH := 540
-BOARD_OVERRIDE_FB0_HEIGHT := 960
-endif
+# includes fix for framebuffer
+TARGET_SPECIFIC_HEADER_PATH := device/motorola/common/include-stock
 endif
 
 # Camera
