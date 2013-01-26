@@ -103,11 +103,16 @@ PRODUCT_PACKAGES += \
     libmm_osal
 
 PRODUCT_PACKAGES += \
-    evtest \
     DockAudio \
     libjni_filtershow_filters \
     libjni_mosaic
-    
+
+# Testing
+PRODUCT_PACKAGES += \
+    evtest \
+    tinymix \
+    tinycap \
+    tinyplay
 
 # Permissions files
 PRODUCT_COPY_FILES += \
