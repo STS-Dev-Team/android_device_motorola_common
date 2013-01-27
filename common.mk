@@ -103,16 +103,11 @@ PRODUCT_PACKAGES += \
     libmm_osal
 
 PRODUCT_PACKAGES += \
+    evtest \
     DockAudio \
     libjni_filtershow_filters \
     libjni_mosaic
-
-# Testing
-PRODUCT_PACKAGES += \
-    evtest \
-    tinymix \
-    tinycap \
-    tinyplay
+    
 
 # Permissions files
 PRODUCT_COPY_FILES += \
@@ -244,7 +239,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Radio and Telephony
 PRODUCT_PROPERTY_OVERRIDES += \
-    keyguard.no_require_sim = true
+    keyguard.no_require_sim = true \
     persist.ril.mux.noofchannels=10 \
     ro.cdma.otaspnumschema=SELC,1,80,99 \
     ro.config.vc_call_vol_steps=7 \
