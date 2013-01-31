@@ -1,8 +1,8 @@
 #
-# This is the product configuration for a full common
+# This is the product configuration for omap4-common
 #
 
-COMMON_FOLDER := device/motorola/common
+COMMON_FOLDER := device/motorola/omap4-common
 
 # The gps config appropriate for this device
 PRODUCT_COPY_FILES += \
@@ -172,7 +172,7 @@ PRODUCT_COPY_FILES += \
     $(COMMON_FOLDER)/prebuilt/bin/fixboot.sh:/root/sbin/fixboot.sh
 else
 
-# non-kexec setting
+# Stock kernel setting
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.hwc.sw_vsync=1
 
@@ -263,4 +263,4 @@ PRODUCT_LOCALES += en_US
 # stuff specific to ti OMAP4 hardware
 #$(call inherit-product, hardware/ti/omap4xxx/omap4.mk)
 $(call inherit-product, hardware/ti/omap4xxx/security/Android.mk)
-$(call inherit-product-if-exists, vendor/motorola/common/common-vendor.mk)
+$(call inherit-product-if-exists, vendor/motorola/omap4-common/common-vendor.mk)

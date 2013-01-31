@@ -1,4 +1,2 @@
-android_device_motorola_common
+Common device configuration for Motorola OMAP4 MapPhone
 ==============================
-
-Common device for OMAP4 MapPhone
