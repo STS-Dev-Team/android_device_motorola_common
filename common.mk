@@ -106,7 +106,6 @@ PRODUCT_PACKAGES += \
     DockAudio \
     libjni_filtershow_filters \
     libjni_mosaic
-    
 
 # Permissions files
 PRODUCT_COPY_FILES += \
@@ -187,7 +186,8 @@ PRODUCT_COPY_FILES += \
     $(COMMON_FOLDER)/root/init.usb.rc:system/etc/rootfs/init.usb.rc \
     $(COMMON_FOLDER)/root/ueventd.mapphone.rc:/system/etc/rootfs/ueventd.mapphone_cdma.rc \
     $(COMMON_FOLDER)/root/ueventd.mapphone.rc:/system/etc/rootfs/ueventd.mapphone_umts.rc \
-    $(OUT)/root/sbin/adbd:system/etc/rootfs/sbin/adbd
+    $(OUT)/root/sbin/adbd:system/etc/rootfs/sbin/adbd \
+    $(OUT)/root/init:system/etc/rootfs/init
 
 endif
 
