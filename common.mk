@@ -152,27 +152,6 @@ PRODUCT_COPY_FILES += \
     $(COMMON_FOLDER)/root/ueventd.mapphone.rc:/root/ueventd.mapphone_cdma.rc \
     $(COMMON_FOLDER)/root/ueventd.mapphone.rc:/root/ueventd.mapphone_umts.rc
 
-# Kexec files
-ifeq ($(BOARD_USES_KEXEC),true)
-# Don't add these for solana -- they're in the solana device setup
-ifneq ($(TARGET_DEVICE),solana)
-PRODUCT_COPY_FILES += \
-    $(COMMON_FOLDER)/kexec/arm_kexec.ko:system/etc/kexec/arm_kexec.ko \
-    $(COMMON_FOLDER)/kexec/kexec.ko:system/etc/kexec/kexec.ko \
-    $(COMMON_FOLDER)/kexec/uart.ko:system/etc/kexec/uart.ko
-endif
-
-# Common kexec files
-PRODUCT_COPY_FILES += \
-    $(COMMON_FOLDER)/kexec/atags:system/etc/kexec/atags \
-    $(COMMON_FOLDER)/kexec/kexec:system/etc/kexec/kexec
-
-# Kexec Boot support for Safestrap v3
-PRODUCT_COPY_FILES += \
-    $(COMMON_FOLDER)/prebuilt/bin/bbx:/root/sbin/bbx \
-    $(COMMON_FOLDER)/prebuilt/bin/fixboot.sh:/root/sbin/fixboot.sh
-else
-
 # Stock kernel setting
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.hwc.sw_vsync=1
@@ -189,8 +168,6 @@ PRODUCT_COPY_FILES += \
     $(COMMON_FOLDER)/root/ueventd.mapphone.rc:/system/etc/rootfs/ueventd.mapphone_umts.rc \
     $(OUT)/root/sbin/adbd:system/etc/rootfs/sbin/adbd \
     $(OUT)/root/init:system/etc/rootfs/init
-
-endif
 
 # General
 PRODUCT_PROPERTY_OVERRIDES += \
