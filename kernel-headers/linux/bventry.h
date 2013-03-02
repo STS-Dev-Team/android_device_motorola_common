@@ -16,46 +16,24 @@
  ***
  ****************************************************************************
  ****************************************************************************/
-#ifndef _LINUX_OMAP_ION_H
-#define _LINUX_OMAP_ION_H
-#include <linux/types.h>
-struct omap_ion_tiler_alloc_data {
+#ifndef BVENTRY_H
+#define BVENTRY_H
+struct bvbuffdesc;
+struct bvbltparams;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
- size_t w;
- size_t h;
- int fmt;
- unsigned int flags;
+struct bvcopparams;
+typedef enum bverror (*BVFN_MAP) (struct bvbuffdesc *buffdesc);
+typedef enum bverror (*BVFN_UNMAP) (struct bvbuffdesc *buffdesc);
+typedef enum bverror (*BVFN_BLT) (struct bvbltparams *bltparams);
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
- struct ion_handle *handle;
- size_t stride;
- size_t offset;
- unsigned int out_align;
+typedef enum bverror (*BVFN_CACHE)(struct bvcopparams *copparams);
+struct bventry {
+ unsigned int structsize;
+ BVFN_MAP bv_map;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
- unsigned int token;
+ BVFN_UNMAP bv_unmap;
+ BVFN_BLT bv_blt;
+ BVFN_CACHE bv_cache;
 };
-enum {
- OMAP_ION_HEAP_TYPE_TILER = ION_HEAP_TYPE_CUSTOM + 1,
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-};
-#define OMAP_ION_HEAP_TILER_MASK (1 << OMAP_ION_HEAP_TYPE_TILER)
-enum {
- OMAP_ION_TILER_ALLOC,
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-};
-enum {
- TILER_PIXEL_FMT_MIN = 0,
- TILER_PIXEL_FMT_8BIT = 0,
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
- TILER_PIXEL_FMT_16BIT = 1,
- TILER_PIXEL_FMT_32BIT = 2,
- TILER_PIXEL_FMT_PAGE = 3,
- TILER_PIXEL_FMT_MAX = 3
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-};
-enum {
- OMAP_ION_HEAP_LARGE_SURFACES,
- OMAP_ION_HEAP_TILER,
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
- OMAP_ION_HEAP_SECURE_INPUT,
-};
 #endif

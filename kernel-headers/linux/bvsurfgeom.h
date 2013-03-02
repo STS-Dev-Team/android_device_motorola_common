@@ -16,46 +16,19 @@
  ***
  ****************************************************************************
  ****************************************************************************/
-#ifndef _LINUX_OMAP_ION_H
-#define _LINUX_OMAP_ION_H
-#include <linux/types.h>
-struct omap_ion_tiler_alloc_data {
+#ifndef BVSURFGEOM_H
+#define BVSURFGEOM_H
+struct bvsurfgeom {
+ unsigned int structsize;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
- size_t w;
- size_t h;
- int fmt;
- unsigned int flags;
+ enum ocdformat format;
+ unsigned int width;
+ unsigned int height;
+ int orientation;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
- struct ion_handle *handle;
- size_t stride;
- size_t offset;
- unsigned int out_align;
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
- unsigned int token;
+ long virtstride;
+ enum ocdformat paletteformat;
+ void *palette;
 };
-enum {
- OMAP_ION_HEAP_TYPE_TILER = ION_HEAP_TYPE_CUSTOM + 1,
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-};
-#define OMAP_ION_HEAP_TILER_MASK (1 << OMAP_ION_HEAP_TYPE_TILER)
-enum {
- OMAP_ION_TILER_ALLOC,
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-};
-enum {
- TILER_PIXEL_FMT_MIN = 0,
- TILER_PIXEL_FMT_8BIT = 0,
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
- TILER_PIXEL_FMT_16BIT = 1,
- TILER_PIXEL_FMT_32BIT = 2,
- TILER_PIXEL_FMT_PAGE = 3,
- TILER_PIXEL_FMT_MAX = 3
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-};
-enum {
- OMAP_ION_HEAP_LARGE_SURFACES,
- OMAP_ION_HEAP_TILER,
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
- OMAP_ION_HEAP_SECURE_INPUT,
-};
 #endif

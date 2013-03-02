@@ -54,4 +54,3 @@ struct bvbuffdesc {
  void *auxptr;
 };
 #endif
-

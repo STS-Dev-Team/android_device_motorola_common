@@ -16,27 +16,33 @@
  ***
  ****************************************************************************
  ****************************************************************************/
-#ifndef BVCACHE_H_
-#define BVCACHE_H_
-struct bvbuffdesc;
-struct bvsurfgeom;
+#ifndef _LINUX_OMAP_HWC_H
+#define _LINUX_OMAP_HWC_H
+#define HWC_BLT_DESC_FLAG 0x80000000
+#define HWC_BLT_DESC_FB 0x40000000
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-struct bvrect;
-enum bvcacheop {
- BVCACHE_BIDIRECTIONAL = 0,
- BVCACHE_CPU_TO_DEVICE = 1,
+#define HWC_BLT_DESC_FB_FN(ovlno)   (HWC_BLT_DESC_FLAG | HWC_BLT_DESC_FB | (ovlno))
+#define HWC_BLT_FLAG_USE_FB (1 << 0)
+struct rgz_blt_entry {
+ struct bvbltparams bp;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
- BVCACHE_CPU_FROM_DEVICE = 2,
- BVCACHE_RESERVED3 = 3,
+ struct bvsurfgeom dstgeom;
+ struct bvsurfgeom src1geom;
+ struct bvbuffdesc src1desc;
+ struct bvsurfgeom src2geom;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ struct bvbuffdesc src2desc;
 };
-struct bvcopparams {
+struct omap_hwc_blit_data {
+ __u16 rgz_flags;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
- unsigned int structsize;
- struct bvbuffdesc *desc;
- struct bvsurfgeom *geom;
- struct bvrect *rect;
+ __u16 rgz_items;
+ struct rgz_blt_entry rgz_blts[0];
+};
+struct omap_hwc_data {
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
- enum bvcacheop cacheop;
+ struct dsscomp_setup_dispc_data dsscomp_data;
+ struct omap_hwc_blit_data blit_data;
 };
 #endif
-
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
