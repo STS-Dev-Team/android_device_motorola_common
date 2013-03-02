@@ -2,12 +2,14 @@
 BOARD_VENDOR := motorola-omap4
 
 # includes fix for framebuffer
-TARGET_SPECIFIC_HEADER_PATH := device/motorola/omap4-common/include
+PRODUCT_VENDOR_KERNEL_HEADERS := $(COMMON_FOLDER)/kernel-headers
+TARGET_SPECIFIC_HEADER_PATH := $(COMMON_FOLDER)/include
 
 # Camera
 USE_CAMERA_STUB := false
 TI_CAMERAHAL_DEBUG_ENABLED := true
 
+TARGET_SKIP_OMAP4XXX := true
 OMAP_ENHANCEMENT := true
 #OMAP_ENHANCEMENT_BURST_CAPTURE := true
 #OMAP_ENHANCEMENT_S3D := true
