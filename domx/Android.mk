@@ -1,2 +1,9 @@
-include $(all-subdir-makefiles)
+LOCAL_PATH:= $(call my-dir)
+HARDWARE_TI_OMAP4_BASE:= $(TOP)/hardware/ti/omap4xxx
+OMAP4_DEBUG_MEMLEAK:= false
+
+BUILD_HEAPTRACKED_SHARED_LIBRARY:=$(BUILD_SHARED_LIBRARY)
+BUILD_HEAPTRACKED_EXECUTABLE:= $(BUILD_EXECUTABLE)
+
+include $(call first-makefiles-under,$(LOCAL_PATH))
 
