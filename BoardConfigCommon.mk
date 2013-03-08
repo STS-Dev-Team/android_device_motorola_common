@@ -154,7 +154,7 @@ endif
 # Number of supplementary service groups allowed by init
 TARGET_NR_SVC_SUPP_GIDS := 28
 
-BOARD_USE_NO_DEVFS_SETUP := true
+#BOARD_USE_NO_DEVFS_SETUP := true
 
 # MOTOROLA
 BOARD_USE_MOTOROLA_DEV_ALIAS := true
