@@ -173,7 +173,6 @@ endif
 # OTA Packaging
 TARGET_PROVIDES_RELEASETOOLS := true
 TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := device/motorola/omap4-common/releasetools/common_ota_from_target_files
-TARGET_CUSTOM_RELEASETOOL := ./vendor/motorola/omap4-common/tools/squisher
 
 # Bootanimation
 TARGET_BOOTANIMATION_PRELOAD := true
